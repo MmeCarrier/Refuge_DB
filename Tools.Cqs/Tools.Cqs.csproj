@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ToolResults\" />
     <Folder Include="ToolQueries\" />
   </ItemGroup>
 
