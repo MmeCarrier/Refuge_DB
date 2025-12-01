@@ -1,0 +1,6 @@
+@RefugeManager.Api_HostAddress = http://localhost:5274
+
+GET {{RefugeManager.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
