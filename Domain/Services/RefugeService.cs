@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Tools.Cqs.ToolCommands;
 using Tools.Cqs.ToolResults;
+using Tools.Database;
 
 namespace Domain.Services
 {
@@ -38,11 +39,16 @@ namespace Domain.Services
 
         Benevole IcqsResult<Benevole>.Data => throw new NotImplementedException();
 
-        ICqsResult ICommandHandler<AjoutBenevole>.Execute(AjoutBenevole command)
+        public ICqsResult Execute(AjoutBenevole command)
         {
             try
             {
-                _dbConnection.ExecuteNonQuery
+                _dbConnection.ExecuteNonQuery("AjoutBenevole", true, command);
+                    return CqsResult.Success();
+            }
+            catch(Exception ex)
+            {
+                return CqsResult.Failure(ex.Message);
             }
             throw new NotImplementedException();
         }
