@@ -1,3 +1,5 @@
+using Domain.Repositories;
+using Domain.Services;
 using Microsoft.Data.SqlClient;
 using System.Data.Common;
 
@@ -10,6 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<DbConnection>(sp => new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Refuge_Db;Integrated Security=True;Encrypt=True;Trust Server Certificate=True;"));
+builder.Services.AddScoped<IRefugeRepository, RefugeService>();
 
 var app = builder.Build();
 
