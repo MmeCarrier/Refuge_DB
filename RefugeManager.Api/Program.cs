@@ -1,3 +1,6 @@
+using Microsoft.Data.SqlClient;
+using System.Data.Common;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +9,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddTransient<DbConnection>(sp => new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Refuge_Db;Integrated Security=True;Encrypt=True;Trust Server Certificate=True;"));
 
 var app = builder.Build();
 
