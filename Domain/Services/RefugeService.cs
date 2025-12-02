@@ -40,6 +40,10 @@ namespace Domain.Services
 
         ICqsResult ICommandHandler<AjoutBenevole>.Execute(AjoutBenevole command)
         {
+            try
+            {
+                _dbConnection.ExecuteNonQuery
+            }
             throw new NotImplementedException();
         }
     }
