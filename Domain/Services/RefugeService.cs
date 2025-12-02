@@ -3,6 +3,7 @@ using Domain.Entities;
 using Domain.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,16 @@ namespace Domain.Services
 {
     public class RefugeService : IRefugeRepository
     {
+        private readonly DbConnection _dbConnection;
+
+        public RefugeService(DbConnection dbConnection)
+        { 
+            _dbConnection = dbConnection;
+            if (_dbConnection.State is not System.Data.ConnectionState.Open)
+            {
+                _dbConnection.Open();
+            }
+        }
         bool ICqsResult.IsSuccess => throw new NotImplementedException();
 
         bool IcqsResult<Benevole>.IsSuccess => throw new NotImplementedException();
