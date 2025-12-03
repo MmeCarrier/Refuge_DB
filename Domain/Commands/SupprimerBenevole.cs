@@ -9,10 +9,10 @@ namespace Domain.Commands
 {
     public class SupprimerBenevole : ICommandDefinition
     {
+        public int Id { get;}
         public SupprimerBenevole(int id)
         {
-            id = Id;
+            Id = id;
         }
-        public int Id { get;}
     }
 }

@@ -10,11 +10,9 @@ using Tools.Cqs.ToolResults;
 
 namespace Domain.Repositories
 {
-    public interface IRefugeRepository : 
-        ICommandDefinition,
+    public interface IRefugeRepository :        
         ICommandHandler<AjoutBenevole>,
-        ICqsResult,IcqsResult<Benevole>
-        
+        ICommandHandler<SupprimerBenevole>
     {
     }
 }

@@ -25,19 +25,8 @@ namespace Domain.Services
                 _dbConnection.Open();
             }
         }
-        bool ICqsResult.IsSuccess => throw new NotImplementedException();
 
-        bool IcqsResult<Benevole>.IsSuccess => throw new NotImplementedException();
-
-        bool ICqsResult.IsFailure => throw new NotImplementedException();
-
-        bool IcqsResult<Benevole>.IsFailure => throw new NotImplementedException();
-
-        string ICqsResult.ErrorMessage => throw new NotImplementedException();
-
-        string IcqsResult<Benevole>.ErrorMessage => throw new NotImplementedException();
-
-        Benevole IcqsResult<Benevole>.Data => throw new NotImplementedException();
+        
 
         public ICqsResult Execute(AjoutBenevole command)
         {
@@ -50,7 +39,24 @@ namespace Domain.Services
             {
                 return CqsResult.Failure(ex.Message);
             }
-            throw new NotImplementedException();
+        }
+
+        public ICqsResult Execute(SupprimerBenevole command)
+        {
+            try
+            {
+                int rows = _dbConnection.ExecuteNonQuery("SupprimerBenevole", true, command);
+
+                if (rows == 1)
+                    return CqsResult.Success();
+
+                return CqsResult.Failure("Benevole introuvable");
+            }
+            catch(Exception ex)
+            {
+                return CqsResult.Failure(ex.Message);
+            }
+
         }
     }
 }
