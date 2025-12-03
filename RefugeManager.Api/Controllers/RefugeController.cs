@@ -25,5 +25,15 @@ namespace RefugeManager.Api.Controllers
             }
             return NoContent();
         }
+        [HttpDelete]
+        public IActionResult Delete(string prenom)
+        {
+            ICqsResult result = _refugeRepository.Execute(new SupprimerBenevole(prenom));
+            if (result.IsFailure)
+            {
+                return BadRequest(result);
+            }
+            return NoContent();
+        }
     }
 }

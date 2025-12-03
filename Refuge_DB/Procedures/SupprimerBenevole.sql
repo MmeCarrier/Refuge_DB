@@ -1,11 +1,11 @@
 ﻿CREATE PROCEDURE [dbo].[SupprimerBenevole]
-	@Id INT
+	@Prenom VARCHAR(50)
 	
 AS
 	BEGIN
 		DELETE 
 		FROM [dbo].[Benevole]
-		WHERE [Id] = @Id
+		WHERE [Prenom] = @Prenom
 	END
 
 
