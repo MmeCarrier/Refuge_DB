@@ -58,5 +58,19 @@ namespace Domain.Services
             }
 
         }
+        public ICqsResult Execute(UpdateBenevole command)
+        {
+            try
+            {
+                int rows = _dbConnection.ExecuteNonQuery("UpdateBenevole", true, command);
+                if (rows == 1)
+                    return CqsResult.Success();
+                return CqsResult.Failure("Benevole à supprimer introuvable");
+            }
+            catch(Exception ex)
+            {
+                return CqsResult.Failure(ex.Message);
+            }
+        }
     }
 }

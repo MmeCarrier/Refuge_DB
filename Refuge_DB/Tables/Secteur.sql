@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[Secteur]
+(
+	[SecteurId] INT IDENTITY (1,1) NOT NULL PRIMARY KEY,
+	[NomSecteur] NVARCHAR(30) NOT NULL	
+)

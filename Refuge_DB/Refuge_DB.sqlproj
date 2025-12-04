@@ -64,8 +64,14 @@
     <Build Include="Procedures\AjoutBenevole.sql" />
     <Build Include="Procedures\SupprimerBenevole.sql" />
     <Build Include="Procedures\UpdateBenevole.sql" />
+    <Build Include="Tables\Secteur.sql" />
+    <Build Include="Tables\Animal.sql" />
+    <Build Include="Tables\FA.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Refuge_DB.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="Refuge_DB.refactorlog" />
   </ItemGroup>
 </Project>

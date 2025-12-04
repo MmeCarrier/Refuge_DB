@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="791424e6-4505-48f7-8bcf-a99992672bdc" ChangeDateTime="12/04/2025 10:23:09">
+    <Property Name="ElementName" Value="[dbo].[Benevole].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Benevole]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IdBenevole" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="672b6d1f-febb-4d47-88ee-6c2fde9e7f93" ChangeDateTime="12/04/2025 10:23:38">
+    <Property Name="ElementName" Value="[dbo].[Benevole].[IdBenevole]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Benevole]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="BenevoleId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="88f2f11e-3971-4bea-98ec-638f2f2bd161" ChangeDateTime="12/04/2025 10:24:07">
+    <Property Name="ElementName" Value="[dbo].[Secteur].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Secteur]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SecteurId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1746b5df-27d3-4c4e-bd8b-8ec8d3d45961" ChangeDateTime="12/04/2025 10:49:14">
+    <Property Name="ElementName" Value="[dbo].[F_A].[F_AId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[F_A]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="FAId" />
+  </Operation>
+</Operations>

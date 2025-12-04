@@ -12,7 +12,8 @@ namespace Domain.Repositories
 {
     public interface IRefugeRepository :        
         ICommandHandler<AjoutBenevole>,
-        ICommandHandler<SupprimerBenevole>
+        ICommandHandler<SupprimerBenevole>,
+        ICommandHandler<UpdateBenevole>
     {
     }
 }

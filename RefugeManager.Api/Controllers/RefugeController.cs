@@ -35,5 +35,13 @@ namespace RefugeManager.Api.Controllers
             }
             return NoContent();
         }
+        [HttpPut]
+        public IActionResult Update(string prenom, [FromBody] UpdateBenevole dto)
+        {
+            ICqsResult result = _refugeRepository.Execute(new UpdateBenevole(prenom, dto.Nom, dto.Tel, dto.Adresse, dto.EstResponsable,dto.FormeFerme ,dto.FormeReptile, dto.FormeContrat));
+            if (result.IsFailure)
+            { return BadRequest(result); }
+            return NoContent();
+        }
     }
 }
