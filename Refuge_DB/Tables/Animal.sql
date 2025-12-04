@@ -5,6 +5,7 @@
 	[Espece] NVARCHAR (30) NOT NULL,
 	[Age] INT,
 	[MF] BIT,
+	[Sterilise] BIT,
 	[PrimoVaccin] BIT,
 	[VaccinComplet] BIT,
 	[Provenance] VARCHAR (50) NOT NULL,
