@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Refuge_DB.publish.xml" />
+    <None Include="Refuge_DB_1.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Refuge_DB.refactorlog" />

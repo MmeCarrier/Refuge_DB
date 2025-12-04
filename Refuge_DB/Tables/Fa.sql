@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[FA]
+﻿CREATE TABLE [dbo].[Fa]
 (
 	[FAId] INT IDENTITY NOT NULL PRIMARY KEY,
 	CONSTRAINT [FK_FA_ToBenevole] FOREIGN KEY ([FAId]) REFERENCES [Benevole] ([BenevoleId]),

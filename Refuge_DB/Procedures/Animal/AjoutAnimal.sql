@@ -3,6 +3,7 @@
 	@Espece NVARCHAR (30),
 	@Age INT,
 	@MF BIT,
+	@Sterilise BIT,
 	@PrimoVaccin BIT,
 	@VaccinComplet BIT,
 	@Provenance VARCHAR (50),
@@ -27,8 +28,8 @@ BEGIN
 
 		IF LEN(TRIM(@Remarque)) = 0
 		RAISERROR('La remarque ne peut pas être vice' ,16, 1);
-INSERT INTO [dbo].[Animal] ([Nom],[Espece],[Age],[MF],[PrimoVaccin],[VaccinComplet],[Provenance],[LieuProvenance], [Localisation],[Remarque])
-	VALUES (@Nom,@Espece,@Age,@MF,@PrimoVaccin,@VaccinComplet,@Provenance,@LieuProvenance,@Localisation,@Remarque)
+INSERT INTO [dbo].[Animal] ([Nom],[Espece],[Age],[MF],[Sterilise],[PrimoVaccin],[VaccinComplet],[Provenance],[LieuProvenance], [Localisation],[Remarque])
+	VALUES (@Nom,@Espece,@Age,@MF,@Sterilise,@PrimoVaccin,@VaccinComplet,@Provenance,@LieuProvenance,@Localisation,@Remarque)
 
 END TRY
 	BEGIN CATCH

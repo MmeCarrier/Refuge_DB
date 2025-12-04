@@ -21,6 +21,21 @@ namespace Domain.Mappers
                                  (bool)record["FormeFerme"], 
                                  (bool)record["FormeReptile"], 
                                  (bool)record["FormeContrat"]);
-            }
+             }
+        internal static Animal ToAnimal(this IDataRecord record)
+        {
+            return new Animal((int)record["AnimalId"],
+                               (string)record["Nom"],
+                                (string)record["Espece"],
+                                (string)record["Age"],
+                                (bool)record["MF"],
+                                (bool)record["Sterilise"],
+                                (bool)record["PrimoVAccin"],
+                                (bool)record["Vaccincomplet"],
+                                (string)record["Provenance"],
+                                (string)record["LieuProvenance"],
+                                (string)record["Localisation"],
+                                (string)record["Remarque"]);
+        }
     }
 }

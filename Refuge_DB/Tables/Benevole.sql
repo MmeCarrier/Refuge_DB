@@ -10,5 +10,5 @@
 	[FormeReptile] BIT NOT NULL,
 	[FormeContrat] BIT NOT NULL, 
     CONSTRAINT [FK_Benevole_ToSecteur] FOREIGN KEY ([BenevoleId]) REFERENCES [Secteur]([SecteurId]),
-	CONSTRAINT [FK_Benevole_ToBenevole] FOREIGN KEY ([BenevoleId]) References [FA] ([FaId])
+	CONSTRAINT [FK_Benevole_ToBenevole] FOREIGN KEY ([BenevoleId]) References [Fa] ([FaId])
 )
