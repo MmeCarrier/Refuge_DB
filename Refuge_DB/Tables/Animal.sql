@@ -4,14 +4,14 @@
 	[Nom] NVARCHAR (60),
 	[Espece] NVARCHAR (30) NOT NULL,
 	[Age] INT,
-	[M/F] BIT,
-	[Primo-vaccin] BIT,
-	[Vaccin-complet] BIT,
+	[MF] BIT,
+	[PrimoVaccin] BIT,
+	[VaccinComplet] BIT,
 	[Provenance] VARCHAR (50) NOT NULL,
-	[Lieu_Provenance] VARCHAR (50),
+	[LieuProvenance] VARCHAR (50),
 	[Localisation] VARCHAR (50) NOT NULL,
 	[Remarque] VARCHAR (200),
-	CONSTRAINT [FK_Animal_ToTable] FOREIGN KEY ([AnimalId]) REFERENCES [F_A] ([FAId]),
-	CONSTRAINT [FK_AnimalToTable] Foreign Key ([AnimalId]) REFERENCES [Secteur] ([SecteurId])
+	CONSTRAINT [FK_Animal_ToFa] FOREIGN KEY ([AnimalId]) REFERENCES [Fa] ([FaId]),
+	CONSTRAINT [FK_AnimalToBenevole] Foreign Key ([AnimalId]) REFERENCES [Secteur] ([SecteurId])
 
 )

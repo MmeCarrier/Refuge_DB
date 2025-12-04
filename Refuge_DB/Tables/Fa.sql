@@ -1,6 +1,6 @@
-﻿CREATE TABLE [dbo].[F_A]
+﻿CREATE TABLE [dbo].[FA]
 (
 	[FAId] INT IDENTITY NOT NULL PRIMARY KEY,
-	CONSTRAINT [FK_FA_ToTable] FOREIGN KEY ([FAId]) REFERENCES [Benevole] ([BenevoleId]),
-	CONSTRAINT [FK_FA_ToTable] FOREIGN KEY ([FAId]) REFERENCES [Animal] ([AnimalId])
+	CONSTRAINT [FK_FA_ToBenevole] FOREIGN KEY ([FAId]) REFERENCES [Benevole] ([BenevoleId]),
+	CONSTRAINT [FK_FA_ToAnimal] FOREIGN KEY ([FAId]) REFERENCES [Animal] ([AnimalId])
 )

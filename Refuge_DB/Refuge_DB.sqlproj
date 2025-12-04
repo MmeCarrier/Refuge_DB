@@ -58,15 +58,19 @@
     <Folder Include="Properties" />
     <Folder Include="Tables" />
     <Folder Include="Procedures" />
+    <Folder Include="Procedures\Benevole" />
+    <Folder Include="Procedures\Animal" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Benevole.sql" />
-    <Build Include="Procedures\AjoutBenevole.sql" />
-    <Build Include="Procedures\SupprimerBenevole.sql" />
-    <Build Include="Procedures\UpdateBenevole.sql" />
     <Build Include="Tables\Secteur.sql" />
     <Build Include="Tables\Animal.sql" />
     <Build Include="Tables\FA.sql" />
+    <Build Include="Procedures\Benevole\UpdateBenevole.sql" />
+    <Build Include="Procedures\Benevole\SupprimerBenevole.sql" />
+    <Build Include="Procedures\Benevole\AjoutBenevole.sql" />
+    <Build Include="Procedures\Animal\AjoutAnimal.sql" />
+    <Build Include="Procedures\Animal\UpdateAnimal.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Refuge_DB.publish.xml" />
