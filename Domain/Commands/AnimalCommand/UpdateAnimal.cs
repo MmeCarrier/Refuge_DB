@@ -1,10 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Tools.Cqs.ToolCommands;
 
-namespace RefugeManager.Api.Models.Dtos
+namespace Domain.Commands.AnimalCommand
 {
-    public class AjoutAnimalDto
+   public class UpdateAnimal : ICommandDefinition
     {
-        public AjoutAnimalDto(string nom, string espece, string age, bool sterilise, bool mF, bool primoVaccine, bool vaccineComplet, string provenance, string lieuProvenance, string localisation, string remarque)
+        public UpdateAnimal(string nom, string espece, string age, bool sterilise, bool mF, bool primoVaccine, bool vaccineComplet, string provenance, string lieuProvenance, string localisation, string remarque)
         {
             Nom = nom;
             Espece = espece;
@@ -19,27 +24,16 @@ namespace RefugeManager.Api.Models.Dtos
             Remarque = remarque;
         }
 
-        [StringLength(20, MinimumLength = 4)]
         public string Nom { get; }
-        [Required]
-        [StringLength(20, MinimumLength = 4)]
         public string Espece { get; }
-        [Range(1, int.MaxValue)]
         public string Age { get; }
-        [Required]
         public bool Sterilise { get; }
         public bool MF { get; }
         public bool PrimoVaccine { get; }
         public bool VaccineComplet { get; }
-        [Required]
-        [StringLength(20, MinimumLength = 4)]
         public string Provenance { get; }
-
-        [StringLength(80, MinimumLength = 4)]
         public string LieuProvenance { get; }
-        [Required]
-        public string Localisation {get;}
-        [StringLength(20, MinimumLength = 10)]
+        public string Localisation { get; }
         public string Remarque { get; }
     }
 }

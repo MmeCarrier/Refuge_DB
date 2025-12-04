@@ -1,4 +1,5 @@
-﻿using Domain.Commands;
+﻿using Domain.Commands.AnimalCommand;
+using Domain.Commands.BenevoleCommande;
 using Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,9 @@ namespace Domain.Repositories
     public interface IRefugeRepository :        
         ICommandHandler<AjoutBenevole>,
         ICommandHandler<SupprimerBenevole>,
-        ICommandHandler<UpdateBenevole>
+        ICommandHandler<UpdateBenevole>,
+        ICommandHandler<AjoutAnimal>,
+        ICommandHandler<UpdateAnimal>
     {
     }
 }

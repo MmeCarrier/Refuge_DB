@@ -1,6 +1,8 @@
-﻿using Domain.Commands;
+﻿using Domain.Commands.AnimalCommand;
+using Domain.Commands.BenevoleCommande;
 using Domain.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity.Client;
 using RefugeManager.Api.Models.Dtos;
 using Tools.Cqs.ToolResults;
 
@@ -41,6 +43,26 @@ namespace RefugeManager.Api.Controllers
             ICqsResult result = _refugeRepository.Execute(new UpdateBenevole(prenom, dto.Nom, dto.Tel, dto.Adresse, dto.EstResponsable,dto.FormeFerme ,dto.FormeReptile, dto.FormeContrat));
             if (result.IsFailure)
             { return BadRequest(result); }
+            return NoContent();
+        }
+        [HttpPost]
+        public IActionResult Post([FromBody] AjoutAnimalDto animaldto)
+        {
+            ICqsResult result = _refugeRepository.Execute(new AjoutAnimal(animaldto.Nom, animaldto.Espece, animaldto.Age, animaldto.Sterilise, animaldto.MF, animaldto.PrimoVaccine, animaldto.VaccineComplet, animaldto.Provenance, animaldto.LieuProvenance, animaldto.Localisation, animaldto.Remarque));
+            if (result.IsFailure)
+            {
+                return BadRequest(result);
+            }
+            return NoContent();
+        }
+        [HttpPut]
+        public IActionResult Update(string nom, [FromBody] UpdateAnimal animaldto)
+        {
+            ICqsResult result = _refugeRepository.Execute(new UpdateAnimal(nom, animaldto.Espece, animaldto.Age, animaldto.Sterilise, animaldto.MF, animaldto.PrimoVaccine, animaldto.VaccineComplet, animaldto.Provenance, animaldto.LieuProvenance, animaldto.Localisation, animaldto.Remarque));
+                if (result.IsFailure)
+            { 
+                return BadRequest(result);
+            }
             return NoContent();
         }
     }

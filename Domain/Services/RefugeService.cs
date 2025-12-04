@@ -1,4 +1,5 @@
-﻿using Domain.Commands;
+﻿using Domain.Commands.AnimalCommand;
+using Domain.Commands.BenevoleCommande;
 using Domain.Entities;
 using Domain.Repositories;
 using System;
@@ -18,7 +19,7 @@ namespace Domain.Services
         private readonly DbConnection _dbConnection;
 
         public RefugeService(DbConnection dbConnection)
-        { 
+        {
             _dbConnection = dbConnection;
             if (_dbConnection.State is not System.Data.ConnectionState.Open)
             {
@@ -26,16 +27,16 @@ namespace Domain.Services
             }
         }
 
-        
+
 
         public ICqsResult Execute(AjoutBenevole command)
         {
             try
             {
                 _dbConnection.ExecuteNonQuery("AjoutBenevole", true, command);
-                    return CqsResult.Success();
+                return CqsResult.Success();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return CqsResult.Failure(ex.Message);
             }
@@ -52,7 +53,7 @@ namespace Domain.Services
 
                 return CqsResult.Failure("Benevole introuvable");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return CqsResult.Failure(ex.Message);
             }
@@ -67,10 +68,43 @@ namespace Domain.Services
                     return CqsResult.Success();
                 return CqsResult.Failure("Benevole à supprimer introuvable");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return CqsResult.Failure(ex.Message);
             }
         }
+        public ICqsResult Execute(AjoutAnimal command)
+        {
+            try
+            {
+                _dbConnection.ExecuteNonQuery("AjoutAnimal", true, command);
+                {
+                    return CqsResult.Success();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return CqsResult.Failure(ex.Message);
+            }
+        }
+
+        public ICqsResult Execute(UpdateAnimal command)
+        {
+            try
+            {
+                int rows = _dbConnection.ExecuteNonQuery("UpdateAnimal", true, command);
+                if (rows == 1)                
+                    return CqsResult.Success();
+                return CqsResult.Failure("AnimalIntrouvable");                
+            }
+            catch (Exception ex)
+            {
+                return CqsResult.Failure(ex.Message);
+            }
+    
+     
+        }  
     }
 }
+
