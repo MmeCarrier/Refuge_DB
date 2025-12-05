@@ -21,6 +21,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 API", "03 API", "{6B8233
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RefugeManager.Api", "RefugeManager.Api\RefugeManager.Api.csproj", "{066CDA58-4369-46C6-977E-A2BFCCE64DF8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 intermédiaire", "04 intermédiaire", "{76D6CBB1-E6C9-4207-A953-99A1B4726798}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RefugeManagerShared", "RefugeManagerShared\RefugeManagerShared.csproj", "{C1BDB4D8-5FD8-4159-A2C4-22D79C3B5ED6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +53,10 @@ Global
 		{066CDA58-4369-46C6-977E-A2BFCCE64DF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{066CDA58-4369-46C6-977E-A2BFCCE64DF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{066CDA58-4369-46C6-977E-A2BFCCE64DF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1BDB4D8-5FD8-4159-A2C4-22D79C3B5ED6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1BDB4D8-5FD8-4159-A2C4-22D79C3B5ED6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1BDB4D8-5FD8-4159-A2C4-22D79C3B5ED6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1BDB4D8-5FD8-4159-A2C4-22D79C3B5ED6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +67,7 @@ Global
 		{BB71DFC3-6CED-48E3-824E-396D922BFB14} = {37749E4B-40F5-4147-B826-46E3B01DA791}
 		{1C41E051-DAC6-4DF9-AECF-08237B0E8038} = {37749E4B-40F5-4147-B826-46E3B01DA791}
 		{066CDA58-4369-46C6-977E-A2BFCCE64DF8} = {6B823347-ABD1-4184-B847-A960E168A7CE}
+		{C1BDB4D8-5FD8-4159-A2C4-22D79C3B5ED6} = {76D6CBB1-E6C9-4207-A953-99A1B4726798}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {421EAD13-156F-45CB-A724-F5AB191C19D2}
