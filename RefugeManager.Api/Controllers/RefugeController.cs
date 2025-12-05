@@ -17,7 +17,7 @@ namespace RefugeManager.Api.Controllers
         {
             _refugeRepository = refugeRepository;
         }
-        [HttpPost]
+        [HttpPost("AjouterBenevole")]
         public IActionResult Post([FromBody] AjoutBenevoleDto benevoledto)
         {
             ICqsResult result = _refugeRepository.Execute(new AjoutBenevole(benevoledto.Prenom, benevoledto.Nom, benevoledto.Tel, benevoledto.Adresse, benevoledto.EstResponsable, benevoledto.FormeFerme, benevoledto.FormeReptile, benevoledto.FormeContrat));
@@ -27,7 +27,7 @@ namespace RefugeManager.Api.Controllers
             }
             return NoContent();
         }
-        [HttpDelete]
+        [HttpDelete("SupprimerBenevole")]
         public IActionResult Delete(string prenom)
         {
             ICqsResult result = _refugeRepository.Execute(new SupprimerBenevole(prenom));
@@ -37,7 +37,7 @@ namespace RefugeManager.Api.Controllers
             }
             return NoContent();
         }
-        [HttpPut]
+        [HttpPut("ModifierBenevole")]
         public IActionResult Update(string prenom, [FromBody] UpdateBenevole dto)
         {
             ICqsResult result = _refugeRepository.Execute(new UpdateBenevole(prenom, dto.Nom, dto.Tel, dto.Adresse, dto.EstResponsable,dto.FormeFerme ,dto.FormeReptile, dto.FormeContrat));
@@ -45,20 +45,20 @@ namespace RefugeManager.Api.Controllers
             { return BadRequest(result); }
             return NoContent();
         }
-        [HttpPost]
+        [HttpPost("AjouterAnimal")]
         public IActionResult Post([FromBody] AjoutAnimalDto animaldto)
         {
-            ICqsResult result = _refugeRepository.Execute(new AjoutAnimal(animaldto.Nom, animaldto.Espece, animaldto.Age, animaldto.Sterilise, animaldto.MF, animaldto.PrimoVaccine, animaldto.VaccineComplet, animaldto.Provenance, animaldto.LieuProvenance, animaldto.Localisation, animaldto.Remarque));
+            ICqsResult result = _refugeRepository.Execute(new AjoutAnimal(animaldto.Nom, animaldto.Espece, animaldto.Age, animaldto.Sterilise, animaldto.MF, animaldto.PrimoVaccin, animaldto.VaccinComplet, animaldto.Provenance, animaldto.LieuProvenance, animaldto.Localisation, animaldto.Remarque));
             if (result.IsFailure)
             {
                 return BadRequest(result);
             }
             return NoContent();
         }
-        [HttpPut]
+        [HttpPut("ModifierAnimal")]
         public IActionResult Update(string nom, [FromBody] UpdateAnimal animaldto)
         {
-            ICqsResult result = _refugeRepository.Execute(new UpdateAnimal(nom, animaldto.Espece, animaldto.Age, animaldto.Sterilise, animaldto.MF, animaldto.PrimoVaccine, animaldto.VaccineComplet, animaldto.Provenance, animaldto.LieuProvenance, animaldto.Localisation, animaldto.Remarque));
+            ICqsResult result = _refugeRepository.Execute(new UpdateAnimal(nom, animaldto.Espece, animaldto.Age, animaldto.Sterilise, animaldto.MF, animaldto.PrimoVaccin, animaldto.VaccinComplet, animaldto.Provenance, animaldto.LieuProvenance, animaldto.Localisation, animaldto.Remarque));
                 if (result.IsFailure)
             { 
                 return BadRequest(result);

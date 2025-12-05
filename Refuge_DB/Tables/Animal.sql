@@ -12,7 +12,9 @@
 	[LieuProvenance] VARCHAR (50),
 	[Localisation] VARCHAR (50) NOT NULL,
 	[Remarque] VARCHAR (200),
-	CONSTRAINT [FK_Animal_ToFa] FOREIGN KEY ([AnimalId]) REFERENCES [Fa] ([FaId]),
-	CONSTRAINT [FK_AnimalToBenevole] Foreign Key ([AnimalId]) REFERENCES [Secteur] ([SecteurId])
+	[FaId] INT NULL, 
+    [SecteurId] INT NOT NULL, 
+    CONSTRAINT [FK_Animal_ToFa] FOREIGN KEY ([FaId]) REFERENCES [Fa] ([FaId]),
+	CONSTRAINT [FK_AnimalToBenevole] Foreign Key ([SecteurId]) REFERENCES [Secteur] ([SecteurId])
 
 )

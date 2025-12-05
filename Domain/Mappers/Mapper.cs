@@ -30,7 +30,7 @@ namespace Domain.Mappers
                                 (string)record["Age"],
                                 (bool)record["MF"],
                                 (bool)record["Sterilise"],
-                                (bool)record["PrimoVAccin"],
+                                (bool)record["PrimoVaccin"],
                                 (bool)record["Vaccincomplet"],
                                 (string)record["Provenance"],
                                 (string)record["LieuProvenance"],

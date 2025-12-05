@@ -4,15 +4,15 @@ namespace RefugeManager.Api.Models.Dtos
 {
     public class AjoutAnimalDto
     {
-        public AjoutAnimalDto(string nom, string espece, string age, bool sterilise, bool mF, bool primoVaccine, bool vaccineComplet, string provenance, string lieuProvenance, string localisation, string remarque)
+        public AjoutAnimalDto(string nom, string espece, string age, bool sterilise, bool mF, bool primoVaccin, bool vaccinComplet, string provenance, string lieuProvenance, string localisation, string remarque)
         {
             Nom = nom;
             Espece = espece;
             Age = age;
             Sterilise = sterilise;
             MF = mF;
-            PrimoVaccine = primoVaccine;
-            VaccineComplet = vaccineComplet;
+            PrimoVaccin = primoVaccin;
+            VaccinComplet = vaccinComplet;
             Provenance = provenance;
             LieuProvenance = lieuProvenance;
             Localisation = localisation;
@@ -29,8 +29,8 @@ namespace RefugeManager.Api.Models.Dtos
         [Required]
         public bool Sterilise { get; }
         public bool MF { get; }
-        public bool PrimoVaccine { get; }
-        public bool VaccineComplet { get; }
+        public bool PrimoVaccin { get; }
+        public bool VaccinComplet { get; }
         [Required]
         [StringLength(20, MinimumLength = 4)]
         public string Provenance { get; }
