@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RefugeManagerShared\RefugeManagerShared.csproj" />
     <ProjectReference Include="..\Tools.Cqs\Tools.Cqs.csproj" />
     <ProjectReference Include="..\Tools.Database\Tools.Database.csproj" />
   </ItemGroup>

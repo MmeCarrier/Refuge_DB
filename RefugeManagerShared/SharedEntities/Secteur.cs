@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Entities
+namespace RefugeManagerShared.SharedEntities
 {
     public class Secteur // obligatoire de créer cette entité pour utiliser entity. obligé d'utiliser entity parce qu'il y a des classes partout avec des fk partout.
     {

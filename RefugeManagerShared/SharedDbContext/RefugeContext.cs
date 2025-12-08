@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Domain;
-using Domain.Entities;
+using RefugeManagerShared.SharedEntities;
 
 
-namespace RefugeManager.Api
+namespace RefugeManagerShared.SharedDbContext
 {
     public class RefugeContext : DbContext
     {

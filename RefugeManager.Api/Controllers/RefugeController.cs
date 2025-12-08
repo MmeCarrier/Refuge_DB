@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
 using RefugeManager.Api.Models.Dtos;
 using Tools.Cqs.ToolResults;
-using RefugeManager.Api;
+using RefugeManagerShared.SharedDbContext;
 
 
 namespace RefugeManager.Api.Controllers

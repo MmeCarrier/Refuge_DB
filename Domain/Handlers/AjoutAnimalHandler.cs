@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Tools.Cqs.ToolResults;
-using RefugeManager.Api;
-
+using RefugeManagerShared;
+using RefugeManagerShared.SharedEntities;
+using RefugeManagerShared.SharedDbContext;
 
 namespace Domain.Handlers
 {

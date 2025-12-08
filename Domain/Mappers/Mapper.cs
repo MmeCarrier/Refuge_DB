@@ -1,4 +1,4 @@
-﻿using Domain.Entities;
+﻿using RefugeManagerShared.SharedEntities;
 using System;
 using System.Collections.Generic;
 using System.Data;

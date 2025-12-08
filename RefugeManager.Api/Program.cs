@@ -2,7 +2,7 @@ using Domain.Repositories;
 using Domain.Services;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using RefugeManager.Api;
+using RefugeManagerShared.SharedDbContext;
 using System.Data.Common;
 
 var builder = WebApplication.CreateBuilder(args);
