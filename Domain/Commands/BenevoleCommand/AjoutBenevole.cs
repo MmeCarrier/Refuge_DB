@@ -9,7 +9,7 @@ namespace Domain.Commands.BenevoleCommande
 {
     public class AjoutBenevole : ICommandDefinition // Il faut créer le Tools pour faire ça
     {
-        public AjoutBenevole(string prenom, string? nom, string tel, string? adresse, bool estResponsable, bool formeFerme, bool formeReptile, bool formeContrat)
+        public AjoutBenevole(string prenom, string? nom, string tel, string? adresse, bool estResponsable, bool formeFerme, bool formeReptile, bool formeContrat, int? secteurId, int? faId)
         {
             Prenom = prenom;
             Nom = nom;
@@ -19,6 +19,8 @@ namespace Domain.Commands.BenevoleCommande
             FormeFerme = formeFerme;
             FormeReptile = formeReptile;
             FormeContrat = formeContrat;
+            SecteurId = secteurId;
+            FaId = faId;
         }
 
         public string Prenom { get; }
@@ -29,5 +31,7 @@ namespace Domain.Commands.BenevoleCommande
         public bool FormeFerme { get; } = false;
         public bool FormeReptile { get; } = false;
         public bool FormeContrat { get; } = false;
+        public int? SecteurId { get; }
+        public int? FaId { get; }
     }
 }

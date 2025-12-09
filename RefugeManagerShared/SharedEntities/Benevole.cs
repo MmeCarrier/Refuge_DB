@@ -8,9 +8,8 @@ namespace RefugeManagerShared.SharedEntities
 {
     public class Benevole
     {
-        public Benevole(int id, string prenom, string? nom, string tel, string? adresse, bool estResponsable, bool formeFerme, bool formeReptile, bool formeContrat)
-        {
-            Id = id;
+        public Benevole(string prenom, string? nom, string tel, string? adresse, bool estResponsable, bool formeFerme, bool formeReptile, bool formeContrat, int? secteurId, int? faId)
+        {            
             Prenom = prenom;
             Nom = nom;
             Tel = tel;
@@ -19,9 +18,11 @@ namespace RefugeManagerShared.SharedEntities
             FormeFerme = formeFerme;
             FormeReptile = formeReptile;
             FormeContrat = formeContrat;
+            SecteurId = secteurId;
+            FaId = faId;
         }
 
-        public int Id { get; }
+        public int BenevoleId { get; private set; }
         public string Prenom { get; set;}
         public string? Nom { get; set; }
         public string Tel { get; set; }
@@ -30,6 +31,12 @@ namespace RefugeManagerShared.SharedEntities
         public bool FormeFerme { get; set; }
         public bool FormeReptile { get; set; }
         public bool FormeContrat { get; set; }
+        
+        public int? SecteurId { get; set; }
+        public Secteur? Secteur { get; set; }
+
+        public int? FaId { get; set; }
+        public Fa? Fa { get; set; }
 
     }
 }

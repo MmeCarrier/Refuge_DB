@@ -6,6 +6,7 @@ using Microsoft.Identity.Client;
 using RefugeManager.Api.Models.Dtos;
 using Tools.Cqs.ToolResults;
 using RefugeManagerShared.SharedDbContext;
+using Domain.Services;
 
 
 namespace RefugeManager.Api.Controllers
@@ -14,15 +15,15 @@ namespace RefugeManager.Api.Controllers
     [Route("api/[controller]")]
     public class RefugeController : ControllerBase    
     {
-        private readonly RefugeContext _refugeContext;
-        public RefugeController(RefugeContext context)
+        private readonly RefugeService _refugeService;
+        public RefugeController(RefugeService refugeService)
         {
-            _refugeContext = context;
+            _refugeService = refugeService;
         }
         [HttpPost("AjouterBenevole")]
-        public IActionResult Post([FromBody] AjoutBenevoleDto benevoledto)
+        public async Task<IActionResult> Post([FromBody] AjoutBenevoleDto benevoledto)
         {
-            ICqsResult result = _refugeContext.Execute(new AjoutBenevole(benevoledto.Prenom, benevoledto.Nom, benevoledto.Tel, benevoledto.Adresse, benevoledto.EstResponsable, benevoledto.FormeFerme, benevoledto.FormeReptile, benevoledto.FormeContrat));
+            ICqsResult result = await _refugeService.Execute(new AjoutBenevole(benevoledto.Prenom, benevoledto.Nom, benevoledto.Tel, benevoledto.Adresse, benevoledto.EstResponsable, benevoledto.FormeFerme, benevoledto.FormeReptile, benevoledto.FormeContrat, benevoledto.SecteurId, benevoledto.FaId));
                 if (result.IsFailure)
             {
                 return BadRequest(result);
@@ -30,9 +31,9 @@ namespace RefugeManager.Api.Controllers
             return NoContent();
         }
         [HttpDelete("SupprimerBenevole")]
-        public IActionResult Delete(string prenom)
+        public async Task<IActionResult> Delete(string prenom)
         {
-            ICqsResult result = _refugeContext.Execute(new SupprimerBenevole(prenom));
+            ICqsResult result = await _refugeService.Execute(new SupprimerBenevole(prenom));
             if (result.IsFailure)
             {
                 return BadRequest(result);
@@ -40,17 +41,17 @@ namespace RefugeManager.Api.Controllers
             return NoContent();
         }
         [HttpPut("ModifierBenevole")]
-        public IActionResult Update(string prenom, [FromBody] UpdateBenevole dto)
+        public async Task<IActionResult> Update(string prenom, [FromBody] UpdateBenevole dto)
         {
-            ICqsResult result = _refugeContext.Execute(new UpdateBenevole(prenom, dto.Nom, dto.Tel, dto.Adresse, dto.EstResponsable,dto.FormeFerme ,dto.FormeReptile, dto.FormeContrat));
+            ICqsResult result = await _refugeService.Execute(new UpdateBenevole(prenom, dto.Nom, dto.Tel, dto.Adresse, dto.EstResponsable,dto.FormeFerme ,dto.FormeReptile, dto.FormeContrat));
             if (result.IsFailure)
             { return BadRequest(result); }
             return NoContent();
         }
         [HttpPost("AjouterAnimal")]
-        public IActionResult Post([FromBody] AjoutAnimalDto animaldto)
+        public async Task<IActionResult> Post([FromBody] AjoutAnimalDto animaldto)
         {
-            ICqsResult result = _refugeContext.Execute(new AjoutAnimal(animaldto.Nom, animaldto.Espece, animaldto.Age, animaldto.Sterilise, animaldto.MF, animaldto.PrimoVaccin, animaldto.VaccinComplet, animaldto.Provenance, animaldto.LieuProvenance, animaldto.Localisation, animaldto.Remarque));
+            ICqsResult result = await _refugeService.Execute(new AjoutAnimal(animaldto.Nom, animaldto.Espece, animaldto.Age, animaldto.Sterilise, animaldto.MF, animaldto.PrimoVaccin, animaldto.VaccinComplet, animaldto.Provenance, animaldto.LieuProvenance, animaldto.Localisation, animaldto.Remarque));
             if (result.IsFailure)
             {
                 return BadRequest(result);
@@ -58,9 +59,9 @@ namespace RefugeManager.Api.Controllers
             return NoContent();
         }
         [HttpPut("ModifierAnimal")]
-        public IActionResult Update(string nom, [FromBody] UpdateAnimal animaldto)
+        public async Task<IActionResult> Update(string nom, [FromBody] UpdateAnimal animaldto)
         {
-            ICqsResult result = _refugeContext.Execute(new UpdateAnimal(nom, animaldto.Espece, animaldto.Age, animaldto.Sterilise, animaldto.MF, animaldto.PrimoVaccin, animaldto.VaccinComplet, animaldto.Provenance, animaldto.LieuProvenance, animaldto.Localisation, animaldto.Remarque));
+            ICqsResult result = await _refugeService.Execute(new UpdateAnimal(nom, animaldto.Espece, animaldto.Age, animaldto.Sterilise, animaldto.MF, animaldto.PrimoVaccin, animaldto.VaccinComplet, animaldto.Provenance, animaldto.LieuProvenance, animaldto.Localisation, animaldto.Remarque));
                 if (result.IsFailure)
             { 
                 return BadRequest(result);

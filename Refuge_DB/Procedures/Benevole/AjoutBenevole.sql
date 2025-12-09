@@ -6,7 +6,9 @@
     @EstResponsable BIT,
 	@FormeFerme BIT,
 	@FormeReptile BIT,
-	@FormeContrat BIT	
+	@FormeContrat BIT,
+	@SecteurId INT,
+	@FaId INT
 AS
 BEGIN
 	BEGIN TRY
@@ -19,9 +21,15 @@ BEGIN
 		IF @EstResponsable NOT IN (0,1)
 			RAISERROR('Veuillez indiquer le rôle adéquat', 16,1);
 
+		IF NOT EXISTS (SELECT 1 FROM Secteur WHERE SecteurId = @SecteurId)
+			RAISERROR('SecteurId invalide', 16, 1);
+
+		IF NOT EXISTS (SELECT 1 FROM Fa WHERE FaId = @FaId)
+			RAISERROR('FaId invalide', 16, 1);
+
 	
-		INSERT INTO [dbo].[Benevole] ([Prenom], [Nom], [Tel], [Adresse], [EstResponsable], [FormeFerme], [FormeReptile], [FormeContrat])
-		VALUES (@Prenom, @Nom, @Tel, @Adresse, @EstResponsable, @FormeFerme, @FormeReptile, @FormeContrat)
+		INSERT INTO [dbo].[Benevole] ([Prenom], [Nom], [Tel], [Adresse], [EstResponsable], [FormeFerme], [FormeReptile], [FormeContrat], [SecteurId], [FaId])
+		VALUES (@Prenom, @Nom, @Tel, @Adresse, @EstResponsable, @FormeFerme, @FormeReptile, @FormeContrat, @SecteurId, @FaId)
 	
 	
 	END TRY

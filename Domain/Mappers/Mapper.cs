@@ -12,20 +12,20 @@ namespace Domain.Mappers
     {
         internal static Benevole ToBenevole(this IDataRecord record)
             {
-             return new Benevole((int)record["Id"], 
-                                 (string)record["Prenom"], 
-                                 (string)record["Nom"], 
-                                 (string)record["Tel"], 
-                                 (string)record["Adresse"], 
-                                 (bool)record["EstResponsable"], 
-                                 (bool)record["FormeFerme"], 
-                                 (bool)record["FormeReptile"], 
-                                 (bool)record["FormeContrat"]);
+            return new Benevole((string)record["Prenom"],
+                                (string)record["Nom"],
+                                (string)record["Tel"],
+                                (string)record["Adresse"],
+                                (bool)record["EstResponsable"],
+                                (bool)record["FormeFerme"],
+                                (bool)record["FormeReptile"],
+                                (bool)record["FormeContrat"],
+                                (int)record["SecteurId"],
+                                (int)record["FaId"]);
              }
         internal static Animal ToAnimal(this IDataRecord record)
         {
-            return new Animal((int)record["AnimalId"],
-                               (string)record["Nom"],
+               return new Animal((string)record["Nom"],
                                 (string)record["Espece"],
                                 (string)record["Age"],
                                 (bool)record["MF"],

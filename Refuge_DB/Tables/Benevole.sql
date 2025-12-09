@@ -11,6 +11,6 @@
 	[FormeContrat] BIT NOT NULL, 
     [SecteurId] INT NULL, 
     [FaId] INT NULL, 
-    CONSTRAINT [FK_Benevole_ToSecteur] FOREIGN KEY ([BenevoleId]) REFERENCES [Secteur]([SecteurId]),
-	CONSTRAINT [FK_Benevole_ToBenevole] FOREIGN KEY ([BenevoleId]) References [Fa] ([FaId])
+    CONSTRAINT [FK_Benevole_ToSecteur] FOREIGN KEY ([SecteurId]) REFERENCES [Secteur]([SecteurId]),
+	CONSTRAINT [FK_Benevole_ToFa] FOREIGN KEY ([FaId]) References [Fa] ([FaId])
 )

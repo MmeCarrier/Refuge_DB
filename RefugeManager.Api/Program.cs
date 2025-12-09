@@ -14,7 +14,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<RefugeContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnexion")));
-builder.Services.AddScoped<IRefugeRepository, RefugeService>();
+builder.Services.AddScoped<DbConnection>(sp=> new SqlConnection(builder.Configuration.GetConnectionString("DefaultConnexion")));
+builder.Services.AddScoped<RefugeService>();
+
 
 var app = builder.Build();
 
