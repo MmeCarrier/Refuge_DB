@@ -20,7 +20,11 @@ namespace RefugeManagerShared.SharedEntities
         public string LieuProvenance { get; set; }
         public string Localisation { get; set; }
         public string? Remarque { get; set; } = null;
-        public Animal(string? nom, string espece, string? age, bool? mF, bool sterilise, bool? primoVaccin, bool? vaccincomplet, string provenance, string lieuProvenance, string localisation, string? remarque)
+        public int SecteurId { get; set; }
+        public int? FaId { get; set; } = null;
+
+        
+        public Animal(string? nom, string espece, string? age, bool? mF, bool sterilise, bool? primoVaccin, bool? vaccincomplet, string provenance, string lieuProvenance, string localisation, string? remarque, int secteurId, int? faId)
         {            ;
             Nom = nom;
             Espece = espece;
@@ -33,6 +37,8 @@ namespace RefugeManagerShared.SharedEntities
             LieuProvenance = lieuProvenance;
             Localisation = localisation;
             Remarque = remarque;
+            SecteurId = secteurId;
+            FaId = faId;
         }
 
 

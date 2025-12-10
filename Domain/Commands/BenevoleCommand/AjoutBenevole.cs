@@ -32,6 +32,6 @@ namespace Domain.Commands.BenevoleCommande
         public bool FormeReptile { get; } = false;
         public bool FormeContrat { get; } = false;
         public int? SecteurId { get; }
-        public int? FaId { get; }
+        public int? FaId { get; } = null;
     }
 }

@@ -85,7 +85,7 @@ namespace Domain.Services
             }
 
         }
-        public async Task<ICqsResult> Execute(UpdateBenevole command)
+        public async Task<ICqsResult> Execute(UpdateBenevoleDto command)
         {
             try
             {
@@ -104,7 +104,10 @@ namespace Domain.Services
                 benevole.EstResponsable = command.EstResponsable;
                 benevole.FormeReptile = command.FormeReptile;
                 benevole.FormeContrat = command.FormeContrat;
-                
+                benevole.SecteurId = command.SecteurId;
+                benevole.FaId = command.FaId;
+
+
                 await _refugeContext.SaveChangesAsync();
                 return CqsResult.Success();
             }
@@ -129,7 +132,9 @@ namespace Domain.Services
                     command.Provenance,
                     command.LieuProvenance,
                     command.Localisation,
-                    command.Remarque
+                    command.Remarque,
+                    command.SecteurId,
+                    command.FaId
                 );
 
                 await _refugeContext.Animal.AddAsync(animal);

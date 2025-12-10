@@ -10,7 +10,7 @@ namespace RefugeManager.Api.Models.Dtos
         public string? Nom { get; }
         [Required]
         [StringLength(15, MinimumLength = 10)]
-        public string? Tel { get; }
+        public string Tel { get; }
         public string? Adresse { get; }
         [Required]
         public bool EstResponsable { get; } = false;
@@ -20,8 +20,9 @@ namespace RefugeManager.Api.Models.Dtos
         public bool FormeReptile { get; } = false;
         [Required]
         public bool FormeContrat { get; } = false;
-
-        public UpdateBenevoleDto(string prenom, string nom, string tel, string adresse, bool estResponsable, bool formeFerme, bool formeReptile, bool formeContrat)
+        public int SecteurId { get; }
+        public int? FaId { get; } = null;
+        public UpdateBenevoleDto(string prenom, string? nom, string tel, string? adresse, bool estResponsable, bool formeFerme, bool formeReptile, bool formeContrat, int secteurId, int? faId)
         {
             Prenom = prenom;
             Nom = nom;
@@ -31,6 +32,8 @@ namespace RefugeManager.Api.Models.Dtos
             FormeFerme = formeFerme;
             FormeReptile = formeReptile;
             FormeContrat = formeContrat;
+            SecteurId = secteurId;
+            FaId = faId;
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Domain.Commands.AnimalCommand
 {
     public class AjoutAnimal : ICommandDefinition
     {
-        public AjoutAnimal(string nom, string espece, string age, bool sterilise, bool mF, bool primoVaccin, bool vaccinComplet, string provenance, string lieuProvenance, string localisation, string remarque)
+        public AjoutAnimal(string nom, string espece, string age, bool sterilise, bool mF, bool primoVaccin, bool vaccinComplet, string provenance, string lieuProvenance, string localisation, string remarque, int secteurId, int faId)
         {
             Nom = nom;
             Espece = espece;
@@ -22,6 +22,8 @@ namespace Domain.Commands.AnimalCommand
             LieuProvenance = lieuProvenance;
             Localisation = localisation;
             Remarque = remarque;
+            SecteurId = secteurId;
+            FaId = faId;
         }
 
         public string Nom {  get; }
@@ -35,5 +37,7 @@ namespace Domain.Commands.AnimalCommand
         public string LieuProvenance{  get; }
         public string Localisation{  get; }
         public string Remarque { get; }
+        public int SecteurId { get; }
+        public int FaId { get; }
 }
 }

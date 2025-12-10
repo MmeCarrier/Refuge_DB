@@ -41,9 +41,9 @@ namespace RefugeManager.Api.Controllers
             return NoContent();
         }
         [HttpPut("ModifierBenevole")]
-        public async Task<IActionResult> Update(string prenom, [FromBody] UpdateBenevole dto)
+        public async Task<IActionResult> Update(string prenom, [FromBody] Models.Dtos.UpdateBenevoleDto benevoledto)
         {
-            ICqsResult result = await _refugeService.Execute(new UpdateBenevole(prenom, dto.Nom, dto.Tel, dto.Adresse, dto.EstResponsable,dto.FormeFerme ,dto.FormeReptile, dto.FormeContrat));
+            ICqsResult result = await _refugeService.Execute(new Domain.Commands.BenevoleCommande.UpdateBenevoleDto(prenom, benevoledto.Nom, benevoledto.Tel, benevoledto.Adresse, benevoledto.EstResponsable, benevoledto.FormeFerme, benevoledto.FormeReptile, benevoledto.FormeContrat, benevoledto.SecteurId, benevoledto.FaId));
             if (result.IsFailure)
             { return BadRequest(result); }
             return NoContent();
@@ -51,7 +51,7 @@ namespace RefugeManager.Api.Controllers
         [HttpPost("AjouterAnimal")]
         public async Task<IActionResult> Post([FromBody] AjoutAnimalDto animaldto)
         {
-            ICqsResult result = await _refugeService.Execute(new AjoutAnimal(animaldto.Nom, animaldto.Espece, animaldto.Age, animaldto.Sterilise, animaldto.MF, animaldto.PrimoVaccin, animaldto.VaccinComplet, animaldto.Provenance, animaldto.LieuProvenance, animaldto.Localisation, animaldto.Remarque));
+            ICqsResult result = await _refugeService.Execute(new AjoutAnimal(animaldto.Nom, animaldto.Espece, animaldto.Age, animaldto.Sterilise, animaldto.MF, animaldto.PrimoVaccin, animaldto.VaccinComplet, animaldto.Provenance, animaldto.LieuProvenance, animaldto.Localisation, animaldto.Remarque, animaldto.SecteurId, animaldto.FaId));
             if (result.IsFailure)
             {
                 return BadRequest(result);

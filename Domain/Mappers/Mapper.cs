@@ -35,7 +35,9 @@ namespace Domain.Mappers
                                 (string)record["Provenance"],
                                 (string)record["LieuProvenance"],
                                 (string)record["Localisation"],
-                                (string)record["Remarque"]);
+                                (string)record["Remarque"],
+                                (int)record["SecteurId"],
+                                (int)record["FaId"]);
         }
     }
 }

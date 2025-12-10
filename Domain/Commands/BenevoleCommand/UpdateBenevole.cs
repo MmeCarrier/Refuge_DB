@@ -7,18 +7,20 @@ using Tools.Cqs.ToolCommands;
 
 namespace Domain.Commands.BenevoleCommande
 {
-    public class UpdateBenevole : ICommandDefinition
+    public class UpdateBenevoleDto : ICommandDefinition
     {
-        public int Id { get; }
+        public int BenevoleId { get; }
         public string Prenom { get; }
-        public string Nom { get; }
+        public string? Nom { get; }
         public string Tel { get; }
-        public string Adresse { get; }
+        public string? Adresse { get; }
         public bool EstResponsable { get; }
         public bool FormeFerme { get; }
         public bool FormeReptile { get; }
         public bool FormeContrat { get; }
-    public UpdateBenevole(string prenom, string nom, string tel, string adresse, bool estResponsable, bool formeFerme, bool formeReptile, bool formeContrat)
+        public int SecteurId { get; }
+        public int? FaId { get; }
+    public UpdateBenevoleDto(string prenom, string? nom, string tel, string? adresse, bool estResponsable, bool formeFerme, bool formeReptile, bool formeContrat, int secteurId, int? faId)
         {
             Prenom = prenom;
             Nom = nom;
@@ -28,6 +30,8 @@ namespace Domain.Commands.BenevoleCommande
             FormeFerme = formeFerme;
             FormeReptile = formeReptile;
             FormeContrat = formeContrat;
+            SecteurId = secteurId;
+            FaId = faId;
         }
     }
 }

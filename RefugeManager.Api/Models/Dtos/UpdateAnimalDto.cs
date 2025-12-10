@@ -4,7 +4,7 @@ namespace RefugeManager.Api.Models.Dtos
 {
     public class UpdateAnimalDto
     {
-        public UpdateAnimalDto(string nom, string espece, int age, bool mF, bool primoVaccin, bool vaccinComplet, string provenance, string lieuProvenance, string localisation, string remarque)
+        public UpdateAnimalDto(string nom, string espece, int age, bool mF, bool primoVaccin, bool vaccinComplet, string provenance, string lieuProvenance, string localisation, string remarque, int secteurId, int faId)
         {
             Nom = nom;
             Espece = espece;
@@ -16,6 +16,8 @@ namespace RefugeManager.Api.Models.Dtos
             LieuProvenance = lieuProvenance;
             Localisation = localisation;
             Remarque = remarque;
+            SecteurId = secteurId;
+            FaId = faId;
         }
 
         [StringLength(20, MinimumLength = 4)]
@@ -42,6 +44,8 @@ namespace RefugeManager.Api.Models.Dtos
 
         [StringLength(20, MinimumLength = 10)]
         public string Remarque { get; }
+        public int SecteurId { get; }
+        public int FaId { get; }
 
     }
 }
