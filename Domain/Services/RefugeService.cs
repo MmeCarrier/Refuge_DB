@@ -167,7 +167,10 @@ namespace Domain.Services
                 animal.Provenance = command.Provenance;
                 animal.LieuProvenance = command.LieuProvenance;
                 animal.Localisation = command.Localisation;
+
                 animal.Remarque = command.Remarque;
+                animal.SecteurId = command.SecteurId;
+                animal.FaId = command.FaId;
 
                 await _refugeContext.SaveChangesAsync();
                 return CqsResult.Success();
@@ -176,9 +179,33 @@ namespace Domain.Services
             {
                 return CqsResult.Failure(ex.Message);
             }
-    
-     
-        }  
+                            
+        }
+
+        public async Task<ICqsResult> Execute(SupprimerAnimal command)
+        {
+            try
+            {
+                var benevole = await _refugeContext.Benevole
+                .FirstOrDefaultAsync(b => b.Nom == command.Nom);
+
+                if (benevole == null)
+                {
+                    return CqsResult.Failure("Benevole à supprimer introuvable");
+                }
+                _refugeContext.Benevole.Remove(benevole);
+                await _refugeContext.SaveChangesAsync();
+                return CqsResult.Success();
+            }
+
+            catch (Exception ex)
+            {
+                return CqsResult.Failure(ex.Message);
+            }
+
+        }
+
+
     }
 }
 

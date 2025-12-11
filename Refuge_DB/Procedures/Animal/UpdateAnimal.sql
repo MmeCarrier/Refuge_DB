@@ -9,7 +9,9 @@
 	@Provenance VARCHAR (50),
 	@LieuProvenance VARCHAR (50),
 	@Localisation VARCHAR (50),
-	@Remarque VARCHAR (200)
+	@Remarque VARCHAR (200),
+	@SecteurId INT,
+	@FaId INT
 	AS
 BEGIN
 BEGIN TRY
@@ -23,7 +25,10 @@ BEGIN TRY
 	[Provenance]= @Provenance,
 	[LieuProvenance] = @LieuProvenance,
 	[Localisation] = @Localisation,
-	[Remarque]= @Remarque
+	[Remarque]= @Remarque,
+	[SecteurId]= @SecteurId,
+	[FaId]= @FaId
+
 	WHERE @AnimalId = AnimalId;
 	
 END TRY

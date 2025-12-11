@@ -11,7 +11,7 @@ namespace RefugeManagerShared.SharedEntities
         public int AnimalId {  get; private set; }
         public string? Nom { get; set; }
         public string Espece { get; set; }
-        public string? Age { get; set; }
+        public int? Age { get; set; }
         public bool? MF { get; set; }
         public bool Sterilise { set; get; }
         public bool? PrimoVaccin { get; set; }
@@ -21,12 +21,13 @@ namespace RefugeManagerShared.SharedEntities
         public string Localisation { get; set; }
         public string? Remarque { get; set; } = null;
         public int SecteurId { get; set; }
-        public int? FaId { get; set; } = null;
+        public Secteur? Secteur { get; set; }
+        public int? FaId { get; set; }
+        public Fa? Fa { get; set; }
 
-        
-        public Animal(string? nom, string espece, string? age, bool? mF, bool sterilise, bool? primoVaccin, bool? vaccincomplet, string provenance, string lieuProvenance, string localisation, string? remarque, int secteurId, int? faId)
-        {            ;
-            Nom = nom;
+
+        public Animal(string? nom, string espece, int? age, bool? mF, bool sterilise, bool? primoVaccin, bool? vaccincomplet, string provenance, string lieuProvenance, string localisation, string? remarque, int secteurId, int? faId)
+        {   Nom = nom;
             Espece = espece;
             Age = age;
             MF = mF;

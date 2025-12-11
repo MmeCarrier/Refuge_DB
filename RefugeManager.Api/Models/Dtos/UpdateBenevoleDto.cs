@@ -22,18 +22,19 @@ namespace RefugeManager.Api.Models.Dtos
         public bool FormeContrat { get; } = false;
         public int SecteurId { get; }
         public int? FaId { get; } = null;
-        public UpdateBenevoleDto(string prenom, string? nom, string tel, string? adresse, bool estResponsable, bool formeFerme, bool formeReptile, bool formeContrat, int secteurId, int? faId)
-        {
-            Prenom = prenom;
-            Nom = nom;
-            Tel = tel;
-            Adresse = adresse;
-            EstResponsable = estResponsable;
-            FormeFerme = formeFerme;
-            FormeReptile = formeReptile;
-            FormeContrat = formeContrat;
-            SecteurId = secteurId;
-            FaId = faId;
-        }
+
+        //public UpdateBenevoleDto(string prenom, string? nom, string tel, string? adresse, bool estResponsable, bool formeFerme, bool formeReptile, bool formeContrat, int secteurId, int? faId)
+        //{
+        //    Prenom = prenom;
+        //    Nom = nom;
+        //    Tel = tel;
+        //    Adresse = adresse;
+        //    EstResponsable = estResponsable;
+        //    FormeFerme = formeFerme;
+        //    FormeReptile = formeReptile;
+        //    FormeContrat = formeContrat;
+        //    SecteurId = secteurId;
+        //    FaId = faId;
+        //}
     }
 }

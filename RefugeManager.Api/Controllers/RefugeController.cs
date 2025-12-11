@@ -61,7 +61,7 @@ namespace RefugeManager.Api.Controllers
         [HttpPut("ModifierAnimal")]
         public async Task<IActionResult> Update(string nom, [FromBody] UpdateAnimal animaldto)
         {
-            ICqsResult result = await _refugeService.Execute(new UpdateAnimal(nom, animaldto.Espece, animaldto.Age, animaldto.Sterilise, animaldto.MF, animaldto.PrimoVaccin, animaldto.VaccinComplet, animaldto.Provenance, animaldto.LieuProvenance, animaldto.Localisation, animaldto.Remarque));
+            ICqsResult result = await _refugeService.Execute(new UpdateAnimal(nom, animaldto.Espece, animaldto.Age, animaldto.Sterilise, animaldto.MF, animaldto.PrimoVaccin, animaldto.VaccinComplet, animaldto.Provenance, animaldto.LieuProvenance, animaldto.Localisation, animaldto.Remarque, animaldto.SecteurId, animaldto.FaId));
                 if (result.IsFailure)
             { 
                 return BadRequest(result);

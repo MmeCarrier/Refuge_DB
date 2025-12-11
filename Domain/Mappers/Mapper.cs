@@ -27,7 +27,7 @@ namespace Domain.Mappers
         {
                return new Animal((string)record["Nom"],
                                 (string)record["Espece"],
-                                (string)record["Age"],
+                                (int)record["Age"],
                                 (bool)record["MF"],
                                 (bool)record["Sterilise"],
                                 (bool)record["PrimoVaccin"],

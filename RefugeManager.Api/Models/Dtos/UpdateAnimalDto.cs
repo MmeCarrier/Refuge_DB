@@ -4,29 +4,13 @@ namespace RefugeManager.Api.Models.Dtos
 {
     public class UpdateAnimalDto
     {
-        public UpdateAnimalDto(string nom, string espece, int age, bool mF, bool primoVaccin, bool vaccinComplet, string provenance, string lieuProvenance, string localisation, string remarque, int secteurId, int faId)
-        {
-            Nom = nom;
-            Espece = espece;
-            Age = age;
-            MF = mF;
-            PrimoVaccin = primoVaccin;
-            VaccinComplet = vaccinComplet;
-            Provenance = provenance;
-            LieuProvenance = lieuProvenance;
-            Localisation = localisation;
-            Remarque = remarque;
-            SecteurId = secteurId;
-            FaId = faId;
-        }
 
         [StringLength(20, MinimumLength = 4)]
         public string Nom { get; }
         [Required]
         [StringLength(20, MinimumLength = 4)]
         public string Espece { get; }
-
-        public int Age { get; }
+        public int? Age { get; }
         public bool MF { get; }
         [Required]
         public bool PrimoVaccin { get; }
@@ -43,9 +27,24 @@ namespace RefugeManager.Api.Models.Dtos
         public string Localisation { get; }
 
         [StringLength(20, MinimumLength = 10)]
-        public string Remarque { get; }
+        public string? Remarque { get; }
         public int SecteurId { get; }
-        public int FaId { get; }
+        public int? FaId { get; }
 
+        //public UpdateAnimalDto(string nom, string espece, int age, bool mF, bool primoVaccin, bool vaccinComplet, string provenance, string lieuProvenance, string localisation, string remarque, int secteurId, int faId)
+        //{
+        //    Nom = nom;
+        //    Espece = espece;
+        //    Age = age;
+        //    MF = mF;
+        //    PrimoVaccin = primoVaccin;
+        //    VaccinComplet = vaccinComplet;
+        //    Provenance = provenance;
+        //    LieuProvenance = lieuProvenance;
+        //    Localisation = localisation;
+        //    Remarque = remarque;
+        //    SecteurId = secteurId;
+        //    FaId = faId;
+        //}
     }
 }
