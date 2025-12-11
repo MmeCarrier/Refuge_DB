@@ -1,5 +1,6 @@
 ﻿using Domain.Commands.AnimalCommand;
-using Domain.Commands.BenevoleCommande;
+using Domain.Commands.BenevoleCommand;
+using Domain.Queries;
 //using Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -9,15 +10,19 @@ using System.Threading.Tasks;
 using Tools.Cqs.ToolCommands;
 using Tools.Cqs.ToolResults;
 using RefugeManagerShared.SharedEntities;
+using Tools.Cqs.ToolQueries;
 
 namespace Domain.Repositories
 {
     public interface IRefugeRepository :        
         ICommandHandler<AjoutBenevole>,
         ICommandHandler<SupprimerBenevole>,
-        ICommandHandler<UpdateBenevoleDto>,
+        ICommandHandler<UpdateBenevole>,
         ICommandHandler<AjoutAnimal>,
-        ICommandHandler<UpdateAnimal>
+        ICommandHandler<UpdateAnimal>,
+        ICommandHandler<SupprimerAnimal>,
+        IQueryHandler<GetAnimalByEspece, Animal>,
+        IQueryHandler<GetAnimalByName, Animal>
     {
     }
 }

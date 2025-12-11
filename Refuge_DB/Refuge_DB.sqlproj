@@ -71,6 +71,7 @@
     <Build Include="Procedures\Benevole\AjoutBenevole.sql" />
     <Build Include="Procedures\Animal\AjoutAnimal.sql" />
     <Build Include="Procedures\Animal\UpdateAnimal.sql" />
+    <Build Include="Procedures\Animal\SupprimerAnimal.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Refuge_DB.publish.xml" />

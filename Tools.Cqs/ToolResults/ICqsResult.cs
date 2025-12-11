@@ -12,11 +12,11 @@ namespace Tools.Cqs.ToolResults
         bool IsFailure { get; }
         string ErrorMessage { get; }
     }
-    public interface IcqsResult<TResult>
+    public interface ICqsResult<TResult>
     {
         bool IsSuccess { get; }
         bool IsFailure { get; }
-        string ErrorMessage { get; }
+        string? ErrorMessage { get; }
         TResult Data { get; }
     }
 }

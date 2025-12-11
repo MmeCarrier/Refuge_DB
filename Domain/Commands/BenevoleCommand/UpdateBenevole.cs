@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Tools.Cqs.ToolCommands;
 
-namespace Domain.Commands.BenevoleCommande
+namespace Domain.Commands.BenevoleCommand
 {
-    public class UpdateBenevoleDto : ICommandDefinition
+    public class UpdateBenevole : ICommandDefinition
     {
         public int BenevoleId { get; }
         public string Prenom { get; }
@@ -20,7 +20,7 @@ namespace Domain.Commands.BenevoleCommande
         public bool FormeContrat { get; }
         public int SecteurId { get; }
         public int? FaId { get; }
-    public UpdateBenevoleDto(string prenom, string? nom, string tel, string? adresse, bool estResponsable, bool formeFerme, bool formeReptile, bool formeContrat, int secteurId, int? faId)
+    public UpdateBenevole(string prenom, string? nom, string tel, string? adresse, bool estResponsable, bool formeFerme, bool formeReptile, bool formeContrat, int secteurId, int? faId)
         {
             Prenom = prenom;
             Nom = nom;

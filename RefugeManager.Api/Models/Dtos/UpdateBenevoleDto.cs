@@ -6,22 +6,22 @@ namespace RefugeManager.Api.Models.Dtos
     {
         [Required]
         [StringLength(50, MinimumLength = 3)]
-        public string Prenom { get; }
-        public string? Nom { get; }
+        public string Prenom { get; set; }
+        public string? Nom { get; set; }
         [Required]
         [StringLength(15, MinimumLength = 10)]
-        public string Tel { get; }
-        public string? Adresse { get; }
+        public string Tel { get; set; }
+        public string? Adresse { get; set; }
         [Required]
-        public bool EstResponsable { get; } = false;
+        public bool EstResponsable { get; set; }
         [Required]
-        public bool FormeFerme { get; } = false;
+        public bool FormeFerme { get; set; }
         [Required]
-        public bool FormeReptile { get; } = false;
+        public bool FormeReptile { get; set; }
         [Required]
-        public bool FormeContrat { get; } = false;
-        public int SecteurId { get; }
-        public int? FaId { get; } = null;
+        public bool FormeContrat { get; set; }
+        public int SecteurId { get; set; }
+        public int? FaId { get; set; }
 
         //public UpdateBenevoleDto(string prenom, string? nom, string tel, string? adresse, bool estResponsable, bool formeFerme, bool formeReptile, bool formeContrat, int secteurId, int? faId)
         //{
