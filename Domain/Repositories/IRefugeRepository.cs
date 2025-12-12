@@ -23,6 +23,7 @@ namespace Domain.Repositories
         ICommandHandler<SupprimerAnimal>,
         IQueryHandler<GetAnimalByEspece, Animal>,
         IQueryHandler<GetAnimalByName, Animal>
+        //,IQueryHandler<GetBySurname, Benevole>
     {
     }
 }

@@ -31,6 +31,14 @@ namespace RefugeManager.Api.Controllers
             }
             return NoContent();
         }
+        [HttpPut("ModifierBenevole")]
+        public async Task<IActionResult> Update(string prenom, [FromBody] UpdateBenevoleDto benevoledto)
+        {
+            ICqsResult result = await _refugeService.Execute(new UpdateBenevole(prenom, benevoledto.Nom, benevoledto.Tel, benevoledto.Adresse, benevoledto.EstResponsable, benevoledto.FormeFerme, benevoledto.FormeReptile, benevoledto.FormeContrat, benevoledto.SecteurId, benevoledto.FaId));
+            if (result.IsFailure)
+            { return BadRequest(result); }
+            return NoContent();
+        }
         [HttpDelete("SupprimerBenevole")]
         public async Task<IActionResult> Delete(string prenom)
         {
@@ -41,13 +49,26 @@ namespace RefugeManager.Api.Controllers
             }
             return NoContent();
         }
-        [HttpPut("ModifierBenevole")]
-        public async Task<IActionResult> Update(string prenom, [FromBody] UpdateBenevoleDto benevoledto)
+
+        //[HttpGet("secteur/{secteur}")]
+        //public async Task<IActionResult> GetBySecteur(string secteur)
+        //{
+        //    ICqsResult<List<Benevole>> result = await _refugeService.GetBenevoleBySecteur(secteur);
+        //    if (result.IsFailure)
+        //    {
+        //        return NotFound(result);
+        //    }
+        //    return Ok(result.Data);
+        //}
+        [HttpGet("prenom/{prenom}")]
+        public async Task<IActionResult> GetByName(string prenom)
         {
-            ICqsResult result = await _refugeService.Execute(new UpdateBenevole(prenom, benevoledto.Nom, benevoledto.Tel, benevoledto.Adresse, benevoledto.EstResponsable, benevoledto.FormeFerme, benevoledto.FormeReptile, benevoledto.FormeContrat, benevoledto.SecteurId, benevoledto.FaId));
+            ICqsResult<List<Benevole>> result = await _refugeService.GetBenevolelByName(prenom);
             if (result.IsFailure)
-            { return BadRequest(result); }
-            return NoContent();
+            {
+                return NotFound(result);
+            }
+            return Ok(result.Data);
         }
         [HttpPost("AjouterAnimal")]
         public async Task<IActionResult> Post([FromBody] AjoutAnimalDto animaldto)
@@ -90,7 +111,7 @@ namespace RefugeManager.Api.Controllers
             return Ok(result.Data);
         }
         [HttpGet("nom/{nom}")]
-        public async Task<IActionResult> GetByName(string nom)
+        public async Task<IActionResult> GetBySurname(string nom)
         {
             ICqsResult<List<Animal>> result = await _refugeService.GetAnimalByName(nom);
             if (result.IsFailure)

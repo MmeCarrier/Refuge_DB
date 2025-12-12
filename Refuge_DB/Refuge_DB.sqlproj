@@ -60,6 +60,7 @@
     <Folder Include="Procedures" />
     <Folder Include="Procedures\Benevole" />
     <Folder Include="Procedures\Animal" />
+    <Folder Include="Procedures\Epidemie" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Benevole.sql" />
@@ -72,6 +73,8 @@
     <Build Include="Procedures\Animal\AjoutAnimal.sql" />
     <Build Include="Procedures\Animal\UpdateAnimal.sql" />
     <Build Include="Procedures\Animal\SupprimerAnimal.sql" />
+    <Build Include="Tables\Epidemie.sql" />
+    <Build Include="Procedures\Epidemie\CreerEpidemie.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Refuge_DB.publish.xml" />

@@ -121,6 +121,29 @@ namespace Domain.Services
                 return CqsResult.Failure(ex.Message);
             }
         }
+
+        public async Task<ICqsResult<List<Benevole>>> GetBenevolelByName(string prenom)
+        {
+            try
+            {
+                var benevole = await _refugeContext.Benevole
+                    .Where(a => a.Prenom == prenom)
+                    .ToListAsync();
+
+                if (!benevole.Any())
+                {
+                    return CqsResult<List<Benevole>>.Failure("Benevole introuvable");
+                }
+                return CqsResult<List<Benevole>>.Success(benevole);
+            }
+            catch (Exception)
+            {
+                return CqsResult<List<Benevole>>.Failure("Benevole introuvable");
+            }
+
+        }
+               
+
         public async Task<ICqsResult> Execute(AjoutAnimal command)
         {
             try

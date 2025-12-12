@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: refuge_db
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=${SA_PASSWORD}
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql_data:/var/opt/mssql
+    networks:
+      - refuge-network
+
+  api:
+    build:
+      context: .
+      dockerfile: RefugeManager.Api/Dockerfile
+    container_name: refuge_api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      - db
+    ports:
+      - "5000:8080"
+    networks:
+      - refuge-network
+
+networks:
+  refuge-network:
+
+volumes:
+  sql_data:
