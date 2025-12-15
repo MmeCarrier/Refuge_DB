@@ -11,6 +11,8 @@ using Tools.Cqs.ToolCommands;
 using Tools.Cqs.ToolResults;
 using RefugeManagerShared.SharedEntities;
 using Tools.Cqs.ToolQueries;
+using Domain.Commands.EpidemieCommand;
+using Domain.Commands.FaCommand;
 
 namespace Domain.Repositories
 {
@@ -21,6 +23,8 @@ namespace Domain.Repositories
         ICommandHandler<AjoutAnimal>,
         ICommandHandler<UpdateAnimal>,
         ICommandHandler<SupprimerAnimal>,
+        ICommandHandler<AjoutEpidemie>,
+        ICommandHandler<AjoutFa>,
         IQueryHandler<GetAnimalByEspece, Animal>,
         IQueryHandler<GetAnimalByName, Animal>
         //,IQueryHandler<GetBySurname, Benevole>

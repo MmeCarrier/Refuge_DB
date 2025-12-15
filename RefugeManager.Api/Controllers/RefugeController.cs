@@ -1,13 +1,14 @@
 ﻿using Domain.Commands.AnimalCommand;
 using Domain.Commands.BenevoleCommand;
+using Domain.Commands.EpidemieCommand;
 using Domain.Repositories;
+using Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
 using RefugeManager.Api.Models.Dtos;
-using Tools.Cqs.ToolResults;
 using RefugeManagerShared.SharedDbContext;
-using Domain.Services;
 using RefugeManagerShared.SharedEntities;
+using Tools.Cqs.ToolResults;
 
 
 namespace RefugeManager.Api.Controllers
@@ -73,7 +74,7 @@ namespace RefugeManager.Api.Controllers
         [HttpPost("AjouterAnimal")]
         public async Task<IActionResult> Post([FromBody] AjoutAnimalDto animaldto)
         {
-            ICqsResult result = await _refugeService.Execute(new AjoutAnimal(animaldto.Nom, animaldto.Espece, animaldto.Age, animaldto.Sterilise, animaldto.MF, animaldto.PrimoVaccin, animaldto.VaccinComplet, animaldto.Provenance, animaldto.LieuProvenance, animaldto.Localisation, animaldto.Remarque, animaldto.SecteurId, animaldto.FaId));
+            ICqsResult result = await _refugeService.Execute(new AjoutAnimal(animaldto.Nom, animaldto.Espece, animaldto.Age, animaldto.Sterilise, animaldto.MF, animaldto.PrimoVaccin, animaldto.VaccinComplet, animaldto.Provenance, animaldto.LieuProvenance, animaldto.Localisation, animaldto.Remarque, animaldto.SecteurId));//, animaldto.FaId));
             if (result.IsFailure)
             {
                 return BadRequest(result);
@@ -120,6 +121,27 @@ namespace RefugeManager.Api.Controllers
             }
             return Ok(result.Data);
         }
+        [HttpPost("AjouterEpidemie")]
+        public async Task<IActionResult> Post([FromBody] AjoutEpidemieDto epidemiedto)
+        {
+            ICqsResult result = await _refugeService.Execute(
+                new AjoutEpidemie(
+                    epidemiedto.Maladie,
+                    epidemiedto.DateDeclaration,                    
+                    epidemiedto.EspeceConcernee,
+                    epidemiedto.EspecesVulnerables,
+                    epidemiedto.SecteurId
+                )
+            );
+
+            if (result.IsFailure)
+            {
+                return BadRequest(result);
+            }
+
+            return NoContent();
+        }
+
     }
 }
 

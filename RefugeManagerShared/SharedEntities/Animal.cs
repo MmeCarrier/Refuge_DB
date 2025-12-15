@@ -22,11 +22,11 @@ namespace RefugeManagerShared.SharedEntities
         public string? Remarque { get; set; } = null;
         public int SecteurId { get; set; }
         public Secteur? Secteur { get; set; }
-        public int? FaId { get; set; }
+        //public int? FaId { get; set; }
         public Fa? Fa { get; set; }
 
 
-        public Animal(string? nom, string espece, int? age, bool? mF, bool sterilise, bool? primoVaccin, bool? vaccincomplet, string provenance, string lieuProvenance, string localisation, string? remarque, int secteurId, int? faId)
+        public Animal(string? nom, string espece, int? age, bool? mF, bool sterilise, bool? primoVaccin, bool? vaccincomplet, string provenance, string lieuProvenance, string localisation, string? remarque, int secteurId)//, int? faId)
         {   Nom = nom;
             Espece = espece;
             Age = age;
@@ -39,7 +39,7 @@ namespace RefugeManagerShared.SharedEntities
             Localisation = localisation;
             Remarque = remarque;
             SecteurId = secteurId;
-            FaId = faId;
+            //FaId = faId;
         }
 
 

@@ -1,5 +1,7 @@
 ﻿using Domain.Commands.AnimalCommand;
 using Domain.Commands.BenevoleCommand;
+using Domain.Commands.EpidemieCommand;
+using Domain.Commands.FaCommand;
 using Domain.Mappers;
 using Domain.Queries;
 
@@ -53,8 +55,8 @@ namespace Domain.Services
                     command.FormeFerme,
                     command.FormeReptile,
                     command.FormeContrat,
-                    command.SecteurId,
-                    command.FaId
+                    command.SecteurId
+                    //command.FaId
                 );
 
                 await _refugeContext.Benevole.AddAsync(benevole);
@@ -110,7 +112,7 @@ namespace Domain.Services
                 benevole.FormeReptile = command.FormeReptile;
                 benevole.FormeContrat = command.FormeContrat;
                 benevole.SecteurId = command.SecteurId;
-                benevole.FaId = command.FaId;
+                //benevole.FaId = command.FaId;
 
 
                 await _refugeContext.SaveChangesAsync();
@@ -161,8 +163,8 @@ namespace Domain.Services
                     command.LieuProvenance,
                     command.Localisation,
                     command.Remarque,
-                    command.SecteurId,
-                    command.FaId
+                    command.SecteurId
+                    //command.FaId
                 );
 
                 await _refugeContext.Animal.AddAsync(animal);
@@ -197,7 +199,7 @@ namespace Domain.Services
                 animal.Localisation = command.Localisation;
                 animal.Remarque = command.Remarque;
                 animal.SecteurId = command.SecteurId;
-                animal.FaId = command.FaId;
+                //animal.FaId = command.FaId;
 
                 await _refugeContext.SaveChangesAsync();
                 return CqsResult.Success();
@@ -271,6 +273,49 @@ namespace Domain.Services
             }
 
         }
+
+        public async Task<ICqsResult> Execute(AjoutEpidemie command)
+        {
+            try
+            {
+                var epidemie = new Epidemie
+                (
+                    command.Maladie,
+                    command.DateDeclaration,                    
+                    command.EspeceConcernee,
+                    command.EspecesVulnerables,
+                    command.SecteurId
+                );
+
+                await _refugeContext.Epidemie.AddAsync(epidemie);
+                await _refugeContext.SaveChangesAsync();
+                return CqsResult.Success();
+            }
+            catch (Exception ex)
+            {
+                return CqsResult.Failure(ex.Message);
+            }
+        }
+
+        public async Task<ICqsResult> Execute(AjoutFa command)
+        {
+            try
+            {
+                var fa = new Fa(command.BenevoleId, command.AnimalId);
+
+                await _refugeContext.Fa.AddAsync(fa);
+                await _refugeContext.SaveChangesAsync();
+
+                return CqsResult.Success();
+            }
+            catch (Exception ex)
+            {
+                return CqsResult.Failure(ex.Message);
+            }
+        }
+
+
+
 
         //    try
         //    {

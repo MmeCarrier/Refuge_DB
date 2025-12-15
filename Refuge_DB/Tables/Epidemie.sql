@@ -2,8 +2,7 @@
 (
 	[EpidemieId] INT IDENTITY NOT NULL PRIMARY KEY,
 	[Maladie] NVARCHAR(30),
-	[DateDeclaration] DATETIME,
-	[SecteurConcerne] NVARCHAR(30),
+	[DateDeclaration] DATETIME,	
 	[EspeceConcernee] NVARCHAR(100),
 	[EspecesVulnerables] NVARCHAR(MAX),
 	[SecteurId] INT NOT NULL
