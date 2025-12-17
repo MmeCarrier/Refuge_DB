@@ -34,7 +34,7 @@ namespace Domain.Services
             _refugeContext = refugeContext;
             //if (_dbConnection.State is not System.Data.ConnectionState.Open)
             //{
-              //  _dbConnection.Open();
+            //  _dbConnection.Open();
             //}
         }
 
@@ -56,7 +56,7 @@ namespace Domain.Services
                     command.FormeReptile,
                     command.FormeContrat,
                     command.SecteurId
-                    //command.FaId
+                //command.FaId
                 );
 
                 await _refugeContext.Benevole.AddAsync(benevole);
@@ -64,11 +64,11 @@ namespace Domain.Services
                 return CqsResult.Success();
             }
             catch (Exception ex)
-            { 
-                return CqsResult.Failure(ex.Message); 
+            {
+                return CqsResult.Failure(ex.Message);
             }
-          
-        }
+
+        } // BENEVOLE
 
         public async Task<ICqsResult> Execute(SupprimerBenevole command)
         {
@@ -78,12 +78,12 @@ namespace Domain.Services
                 .FirstOrDefaultAsync(b => b.Prenom == command.Prenom);
 
                 if (benevole == null)
-                { 
-                  return CqsResult.Failure("Benevole à supprimer introuvable");                
+                {
+                    return CqsResult.Failure("Benevole à supprimer introuvable");
                 }
-                    _refugeContext.Benevole.Remove(benevole);
-                    await _refugeContext.SaveChangesAsync();
-                    return CqsResult.Success();
+                _refugeContext.Benevole.Remove(benevole);
+                await _refugeContext.SaveChangesAsync();
+                return CqsResult.Success();
             }
 
             catch (Exception ex)
@@ -91,7 +91,7 @@ namespace Domain.Services
                 return CqsResult.Failure(ex.Message);
             }
 
-        }
+        } // BENEVOLE
         public async Task<ICqsResult> Execute(UpdateBenevole command)
         {
             try
@@ -122,7 +122,7 @@ namespace Domain.Services
             {
                 return CqsResult.Failure(ex.Message);
             }
-        }
+        } // BENEVOLE
 
         public async Task<ICqsResult<List<Benevole>>> GetBenevolelByName(string prenom)
         {
@@ -143,15 +143,15 @@ namespace Domain.Services
                 return CqsResult<List<Benevole>>.Failure("Benevole introuvable");
             }
 
-        }
-               
+        } // BENEVOLE
+
 
         public async Task<ICqsResult> Execute(AjoutAnimal command)
         {
             try
             {
                 var animal = new Animal
-                (                                       
+                (
                     command.Nom,
                     command.Espece,
                     command.Age,
@@ -164,7 +164,7 @@ namespace Domain.Services
                     command.Localisation,
                     command.Remarque,
                     command.SecteurId
-                    //command.FaId
+                //command.FaId
                 );
 
                 await _refugeContext.Animal.AddAsync(animal);
@@ -175,9 +175,9 @@ namespace Domain.Services
             {
                 return CqsResult.Failure(ex.Message);
             }
-        }
+        } //ANIMAL
 
-        public async Task<ICqsResult> Execute(UpdateAnimal command)
+        public async Task<ICqsResult> Execute(UpdateAnimal command) //ANIMAL
         {
             try
             {
@@ -185,7 +185,7 @@ namespace Domain.Services
                     .FirstOrDefault(a => a.Nom == command.Nom);
                 if (animal == null)
                 {
-                  return CqsResult.Failure("Animal à modifier introuvable");          
+                    return CqsResult.Failure("Animal à modifier introuvable");
                 }
                 animal.Nom = command.Nom;
                 animal.Espece = command.Espece;
@@ -208,7 +208,7 @@ namespace Domain.Services
             {
                 return CqsResult.Failure(ex.Message);
             }
-                            
+
         }
 
         public async Task<ICqsResult> Execute(SupprimerAnimal command)
@@ -232,7 +232,7 @@ namespace Domain.Services
                 return CqsResult.Failure(ex.Message);
             }
 
-        }
+        } //ANIMAL
         public async Task<ICqsResult<List<Animal>>> GetAnimalByEspece(string espece)
         {
             try
@@ -251,9 +251,9 @@ namespace Domain.Services
             {
                 return CqsResult<List<Animal>>.Failure("Animal introuvable");
             }
-             
-        }
-        public async Task<ICqsResult<List<Animal>>> GetAnimalByName(string nom)
+
+        } //ANIMAL
+        public async Task<ICqsResult<List<Animal>>> GetAnimalByName(string nom) //ANIMAL
         {
             try
             {
@@ -274,14 +274,14 @@ namespace Domain.Services
 
         }
 
-        public async Task<ICqsResult> Execute(AjoutEpidemie command)
+        public async Task<ICqsResult> Execute(AjoutEpidemie command) //EPIDEMIE
         {
             try
             {
                 var epidemie = new Epidemie
                 (
                     command.Maladie,
-                    command.DateDeclaration,                    
+                    command.DateDeclaration,
                     command.EspeceConcernee,
                     command.EspecesVulnerables,
                     command.SecteurId
@@ -297,22 +297,85 @@ namespace Domain.Services
             }
         }
 
-        public async Task<ICqsResult> Execute(AjoutFa command)
+        public async Task<ICqsResult> Execute(AjoutFa command) //FAMILLE D'ACCUEIL
         {
             try
             {
-                var fa = new Fa(command.BenevoleId, command.AnimalId);
+                var faExistante = await _refugeContext.Fa
+                    .FirstOrDefaultAsync(f =>
+                    f.AnimalId == command.AnimalId &&
+                    f.DateFin == null);
+                if (faExistante != null)
+                {
+                    return CqsResult.Failure("Cet animal est déjà en famille d'accueil");
+                }
+                var fa = new Fa(command.BenevoleId, command.AnimalId, command.DateDebut);
+
 
                 await _refugeContext.Fa.AddAsync(fa);
                 await _refugeContext.SaveChangesAsync();
-
                 return CqsResult.Success();
+
             }
             catch (Exception ex)
             {
                 return CqsResult.Failure(ex.Message);
             }
         }
+
+        public async Task<ICqsResult> Execute(CloturerFa command) //FAMILLE D'ACCUEIL
+        {
+            try
+            {
+                var faActive = await _refugeContext.Fa
+                    .FirstOrDefaultAsync(f =>
+                    f.FaId == command.FaId &&
+                    f.DateFin == null);
+                if (faActive == null)
+                {
+                    return CqsResult.Failure("Aucune famille d'accueil pour cet animal");
+                }
+
+                if (faActive.DateFin != null)
+                {
+                    return CqsResult.Failure("Cette famille d'accueil est déjà clôturée");
+                }
+                faActive.Cloturer(command.DateFin); // terminer cette commande pour cloturer une famille d'accueil
+
+                await _refugeContext.SaveChangesAsync();
+                return CqsResult.Success();
+            }
+            catch (Exception ex)
+            {
+
+                return CqsResult.Failure(ex.Message);
+            }
+        }
+
+            public async Task<ICqsResult<Fa>> GetFaActiveByAnimal(int animalId) //FAMILLE D'ACCUEIL
+        {
+            try
+            {
+                var fa = await _refugeContext.Fa
+                    .Include(f => f.Benevole)
+                    .Include(f => f.Animal)
+                    .FirstOrDefaultAsync(f =>
+                        f.AnimalId == animalId &&
+                        f.DateFin == null);
+
+                if (fa == null)
+                {
+                    return CqsResult<Fa>.Failure("Aucune FA active pour cet animal");
+                }
+                return CqsResult<Fa>.Success(fa);
+            }
+            catch (Exception)
+            {
+                return CqsResult<Fa>.Failure("Famille d'accueil introuvable");
+            }
+
+        }
+
 
 
 
@@ -334,4 +397,5 @@ namespace Domain.Services
 
     }
 }
+
 

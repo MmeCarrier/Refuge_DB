@@ -9,13 +9,14 @@ namespace Domain.Commands.FaCommand
 {
     public class AjoutFa : ICommandDefinition
     {
-        public AjoutFa(int? benevoleId, int? animalId)
+        public AjoutFa(int benevoleId, int animalId, DateTime dateDebut)
         {
             BenevoleId = benevoleId;
             AnimalId = animalId;
         }
 
-        public int? BenevoleId { get; }
-        public int? AnimalId { get; }
+        public int BenevoleId { get; } // rien de nullable ici, quand on créé une Fa on est certains d'avoir un benevole et un animal.
+        public int AnimalId { get; }
+        public DateTime DateDebut { get; }
     }
 }

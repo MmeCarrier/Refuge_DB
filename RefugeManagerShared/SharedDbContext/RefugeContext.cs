@@ -22,8 +22,8 @@ namespace RefugeManagerShared.SharedDbContext
 
             modelBuilder.Entity<Fa>()
                 .HasOne(f => f.Animal)
-                .WithOne(a => a.Fa)
-                .HasForeignKey<Fa>(f => f.AnimalId);
+                .WithMany(a => a.Fas)
+                .HasForeignKey(f => f.AnimalId);
 
             modelBuilder.Entity<Fa>()
                 .HasOne(f => f.Benevole)

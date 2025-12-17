@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Mappers
 {
-    internal static class Mapper
+    internal static class Mapper //PAS NECESSAIRE POUR DU ENTITY
     {
         internal static Benevole ToBenevole(this IDataRecord record)
             {

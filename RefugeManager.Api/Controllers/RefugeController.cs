@@ -1,6 +1,7 @@
 ﻿using Domain.Commands.AnimalCommand;
 using Domain.Commands.BenevoleCommand;
 using Domain.Commands.EpidemieCommand;
+using Domain.Commands.FaCommand;
 using Domain.Repositories;
 using Domain.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -142,6 +143,33 @@ namespace RefugeManager.Api.Controllers
             return NoContent();
         }
 
+        [HttpPost("CreerFa")]
+        public async Task<IActionResult> CreerFa([FromBody] AjoutFaDto fadto)
+        {
+            ICqsResult result = await _refugeService.Execute(
+                new AjoutFa(
+                    fadto.BenevoleId,
+                    fadto.AnimalId,
+                    fadto.DateDebut)
+                );
+            if (result.IsFailure)
+            {
+                return BadRequest(result);
+            }
+
+            return NoContent();
+        }
+
+        [HttpPost("CloturerFa")]
+        public async Task<IActionResult> CloturerFa([FromBody] CloturerFaDto cloturerdto)
+        {
+            ICqsResult result = await _refugeService.Execute(new CloturerFa(cloturerdto.FaId, cloturerdto.DateFin));
+            if (result.IsFailure)
+            {
+                return BadRequest(result);
+            }
+            return NoContent();
+        }
     }
 }
 

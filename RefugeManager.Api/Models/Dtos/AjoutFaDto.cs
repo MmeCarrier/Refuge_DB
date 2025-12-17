@@ -2,8 +2,9 @@
 {
     public class AjoutFaDto
     {
-        public int? BenevoleId { get; set; }
-        public int? AnimalId { get; set; }
+        public int BenevoleId { get; set; }
+        public int AnimalId { get; set; }
+        public DateTime DateDebut { get; set; }
     }
 
 }

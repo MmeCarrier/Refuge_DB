@@ -8,19 +8,27 @@ namespace RefugeManagerShared.SharedEntities
 {
     public class Fa
     {
-        public Fa(int? benevoleId, int? animalId)
+        public Fa(int benevoleId, int animalId, DateTime dateDebut)
         {
             BenevoleId = benevoleId;
             AnimalId = animalId;
+            DateDebut = dateDebut;
         }
 
         public int FaId { get; private set; }
 
-        public int? BenevoleId { get; set; }
-        public Benevole? Benevole { get; set; }
+        public int BenevoleId { get; private set; }
+        public Benevole Benevole { get; private set; }
 
-        public int? AnimalId { get; set; }
-        public Animal? Animal { get; set; }
+        public int AnimalId { get; private set; }
+        public Animal Animal { get; private set; }
+        public DateTime DateDebut { get; private set; }
+        public DateTime? DateFin { get; private set; }
+
+        public void Cloturer(DateTime dateFin)
+        { 
+            DateFin = dateFin; 
+        }
     }
 
 }
